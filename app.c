@@ -3,9 +3,13 @@
 #include <unistd.h>
 
 #include "buddy.h"
+#include "time.h"
 
 int main(int argc, char *argv[])
 {
+
+
+
 	void *chunkptr;
 	void *endptr;
 	char *charptr;
@@ -43,6 +47,12 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
+    clock_t begin, end;
+    double time_spent;
+
+    begin = clock();
+
+
 	x1 = balloc(600);
 	x2 = balloc(4500);
 	x3 = balloc(1300);
@@ -54,8 +64,11 @@ int main(int argc, char *argv[])
 	bfree(x2);
 	bfree(x3);
 
-    printf("After all freeings are done:\n");
-	bprint();
+    end = clock();
 
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    time_spent = time_spent * 1000; //milliseconds now.
+
+    printf("The execution took %3.5f ms\n", time_spent);
 	return 0;
 }

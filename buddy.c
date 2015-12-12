@@ -183,9 +183,7 @@ void bfree(void *objectptr)
                 siblingPointer[1] = level - 1;
                 bfree( (void*) siblingPointer);
             }
-
         }
-
     }
 
 	return;
