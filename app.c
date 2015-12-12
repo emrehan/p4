@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 	size = atoi(argv[1]);
 
-	// allocate a chunk 
+	// allocate a chunk
 	chunkptr = sbrk(0);	// end of data segment
 	sbrk(size * 1024);	// extend data segment by indicated amount (bytes)
 	endptr = sbrk(0);	// new end of data segment
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	       (unsigned long)chunkptr,
 	       (unsigned long)endptr, (unsigned long)(endptr - chunkptr));
 
-	//test the chunk 
+	//test the chunk
 	printf("---starting testing chunk\n");
 	charptr = (char *)chunkptr;
 	for (i = 0; i < size; ++i)
@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
 	x1 = balloc(600);
 	x2 = balloc(4500);
 	x3 = balloc(1300);
+
+	bprint();
 
 	bfree(x1);
 	bfree(x2);
