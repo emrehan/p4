@@ -47,11 +47,15 @@ int main(int argc, char *argv[])
 	x2 = balloc(4500);
 	x3 = balloc(1300);
 
+    printf("After all allocations are done:\n");
 	bprint();
 
 	bfree(x1);
 	bfree(x2);
 	bfree(x3);
+
+    printf("After all freeings are done:\n");
+	bprint();
 
 	return 0;
 }
